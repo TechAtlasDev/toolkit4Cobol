@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Programa diseñado para agilizar la produccion en el desarrollado enfocado en cobol.
+# By TechAtlasDev
 
 import os, sys, subprocess
 
