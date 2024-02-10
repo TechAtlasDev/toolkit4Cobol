@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+
+import os, sys, subprocess
+
+lista_params = sys.argv[1:]
+parms = " ".join(lista_params)
+
+if len(lista_params) == 0:
+    print ("Necesitas establecer el nombre de tu ejecutable de cobol.")
+    sys.exit()
+
+# Compilando el sistema
+# -x = Geneerar un ejecutable
+# -o = especifica el nombre de salida
+
+output = subprocess.getoutput(f"cobc -x -o {lista_params[0][:-4]} {parms}")
+
+if "línea no terminado por una línea nueva" in output:
+    print (f"Al parecer necesitas que haya un espacio al final de tu programa!.")
+elif output != "":
+    print (f"ERROR: {output}")
+    sys.exit()
+
+# Ejecutando el depurador
+os.system(f"./{lista_params[0][:-4]}")
